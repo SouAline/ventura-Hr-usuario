@@ -3,7 +3,6 @@ package br.edu.infnet.domain.model;
 import javax.persistence.*;
 
 @Entity
-@Table
 public class Usuario {
 
     @Id
@@ -15,8 +14,8 @@ public class Usuario {
     private String senha;
     private String cpf;
     private String cnpj;
-    private String empresa;
-    private Character type;
+    private String razaoSocial;
+    private Character tipo;
     public static final char ADMIN = 'A';
     public static final char CANDIDATO = 'C';
     public static final char EMPRESA = 'E';
@@ -81,19 +80,19 @@ public class Usuario {
         this.cnpj = cnpj;
     }
 
-    public String getEmpresa() {
-        return empresa;
+    public String getRazaoSocial() {
+        return razaoSocial;
     }
 
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
     }
 
-    public Character getType() {
-        return type;
+    public Character getTipo() {
+        return tipo;
     }
 
-    public void setType(Character type) {
-        this.type = type;
+    public void setTipo(Character type) {
+        this.tipo = type;
     }
 }
