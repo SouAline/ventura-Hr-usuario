@@ -1,4 +1,8 @@
 package br.edu.infnet.domain.repository;
 
-public interface UsuarioRepository {
+import br.edu.infnet.domain.model.Usuario;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
+    Usuario findByEmail(String email);
 }
