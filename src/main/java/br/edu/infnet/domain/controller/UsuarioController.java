@@ -2,17 +2,16 @@ package br.edu.infnet.domain.controller;
 
 import br.edu.infnet.domain.model.Usuario;
 import br.edu.infnet.domain.repository.UsuarioRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController //?
-@RequestMapping(path = {"/usuarios"})//esse caminho precisa ser o nome da minha tabela?
+@RestController //Retorna o objeto e os dados do objeto são gravados diretamente na resposta HTTP como JSON ou XML.
+@RequestMapping(path = {"/usuarios"})
 public class UsuarioController {
 
-    @Autowired
+    @Autowired//
     private UsuarioRepository usuarioRepository;
 
     @GetMapping(path = {"/{id}"})
@@ -20,7 +19,7 @@ public class UsuarioController {
         ResponseEntity response = ResponseEntity.notFound().build();
         Usuario usuario = this.findById(id);
         if (usuario != null) {
-            reponse = ResponseEntity.ok().body(usuario);
+            response = ResponseEntity.ok().body(usuario);
         }
         return response;
     }
@@ -64,7 +63,7 @@ public class UsuarioController {
         public ResponseEntity editUser (@RequestBody Usuario usuario){
             ResponseEntity response = ResponseEntity.badRequest().build();
             if (usuario != null && usuario.getId() == null) {
-                Usuario registered = this.findById(Usuario.getId());
+                Usuario registered = this.findById(usuario.getId());
 
                 if (registered != null) {
                     try {
