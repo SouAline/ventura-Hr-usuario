@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController //Retorna o objeto e os dados do objeto são gravados diretamente na resposta HTTP como JSON ou XML.
+@RestController
 @RequestMapping(path = {"/usuarios"})
 public class UsuarioController {
 
-    @Autowired//
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
     @GetMapping(path = {"/{id}"})
@@ -35,7 +35,7 @@ public class UsuarioController {
     }
 
     @GetMapping(path = {"/email/{email}"})
-    public ResponseEntity getByEmail(@PathVariable String email) {
+    public ResponseEntity findByEmail(@PathVariable String email) {
         ResponseEntity response = ResponseEntity.notFound().build();
         try {
             Usuario usuario = usuarioRepository.findByEmail(email);
@@ -50,25 +50,25 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity createUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity criaUsuario(@RequestBody Usuario usuario) {
         ResponseEntity response = ResponseEntity.badRequest().build();
         if (usuario != null && usuario.getId() == null) {
-            Usuario resgistered = usuarioRepository.save(usuario);
-            response = ResponseEntity.status(HttpStatus.CREATED).body(resgistered);
+            Usuario registrado = usuarioRepository.save(usuario);
+            response = ResponseEntity.status(HttpStatus.CREATED).body(registrado);
 
         }
         return response;
     }
         @PutMapping
-        public ResponseEntity editUser (@RequestBody Usuario usuario){
+        public ResponseEntity editaUsuario (@RequestBody Usuario usuario){
             ResponseEntity response = ResponseEntity.badRequest().build();
             if (usuario != null && usuario.getId() == null) {
-                Usuario registered = this.findById(usuario.getId());
+                Usuario registrado = this.findById(usuario.getId());
 
-                if (registered != null) {
+                if (registrado != null) {
                     try {
-                        registered = usuarioRepository.save(usuario);
-                        response = ResponseEntity.ok().body(registered);
+                        registrado = usuarioRepository.save(usuario);
+                        response = ResponseEntity.ok().body(registrado);
                     } catch (Exception e) {
                     }
                 }
