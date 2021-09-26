@@ -14,7 +14,7 @@ public class Usuario {
     private String senha;
     private String cpf;
     private String cnpj;
-    private String razaoSocial;
+    private String empresa;
     private Character tipo;
     public static final char ADMIN = 'A';
     public static final char CANDIDATO = 'C';
@@ -80,19 +80,19 @@ public class Usuario {
         this.cnpj = cnpj;
     }
 
-    public String getRazaoSocial() {
-        return razaoSocial;
+    public String getEmpresa() {
+        return empresa;
     }
 
-    public void setRazaoSocial(String razaoSocial) {
-        this.razaoSocial = razaoSocial;
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 
     public Character getTipo() {
         return tipo;
     }
 
-    public void setTipo(Character type) {
-        this.tipo = type;
+    public void setTipo(Character tipo) {
+        this.tipo = tipo;
     }
 }
